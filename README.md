@@ -81,8 +81,6 @@ These skills provide specific instructions for creating and modifying LookML obj
 ## Advanced Functionality
 
 ### Logic & Security
-*   **[formulate_liquid_lookml](.agents/skills/other/liquid/SKILL.md)**: Using Liquid variables for dynamic SQL, HTML, and links.
-*   **[formulate_access_grant_lookml](.agents/skills/other/access_grants/SKILL.md)**: Implementing Row-Level and Object-Level security using Access Grants.
-
-### Testing
-*   **[tests](.agents/skills/other/tests/SKILL.md)**: Standards for writing LookML tests to ensure data integrity and accuracy.
+*   **[formulate_liquid_lookml](.agents/skills/liquid/SKILL.md)**: Using Liquid variables for dynamic SQL, HTML, and links.
+*   **[formulate_access_grants](.agents/skills/access_grants/SKILL.md)**: Implementing `access_grant` and `required_access_grants` for row-level security.
+*   **[formulate_lookml_tests](.agents/skills/tests/SKILL.md)**: Writing LookML tests for Views and Explores.
