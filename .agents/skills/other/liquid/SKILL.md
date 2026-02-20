@@ -1,6 +1,6 @@
 ---
 name: formulate_liquid_lookml
-description: Use this skill to use Liquid variables in LookML for dynamic SQL, HTML, and Links.
+description: Use this skill to use Liquid variables in LookML for dynamic SQL, HTML, and Links, including advanced patterns for query optimization.
 ---
 
 # Instructions
@@ -9,53 +9,119 @@ description: Use this skill to use Liquid variables in LookML for dynamic SQL, H
     *   `{{ value }}`: Output syntax (inserts text).
     *   `{% if condition %}`: Tag syntax (logic).
 2.  **Common Variables**:
-    *   `value`: Raw value from DB.
-    *   `rendered_value`: Formatted value (as seen in UI).
+    *   `value`: Raw value from DB (best for comparisons).
+    *   `rendered_value`: Formatted value (best for display).
     *   `_filters['view.field']`: User-selected filter values.
     *   `parameter_name._parameter_value`: Selected parameter value.
 3.  **Best Practices**:
-    *   **SQL Injection**: Always use `| sql_quote` when inserting `_filters` into SQL (e.g., in `sql_always_where` or Derived Tables).
-    *   **Performance**: Avoid `{{ field._value }}` in links if possible, as it adds the field to the GROUP BY (use `row['view.field']` for links if the field is already in the query).
+    *   **SQL Injection**: Always use `| sql_quote` when inserting user input (like `_filters`) into SQL that generates string literals.
+    *   **Booleans**: If your dialect requires literal `TRUE`/`FALSE` (like BigQuery), append `| sql_boolean` to `_in_query` or `_is_selected` variables (e.g., `{{ view.field._in_query | sql_boolean }}`).
+    *   **Dependency Awareness**: Remember that `_in_query` checks for usage in **SELECT, Filters, and `required_fields`**. It is NOT limited to just the visible columns.
+    *   **Performance**: Avoid referencing `{{ field._value }}` in `link` parameters if the field isn't already in the query, as this forces Looker to add the field to the `GROUP BY` clause, potentially fan-outing the result set. Use `row['view.field']` instead if you only need the value from the browser result row.
+
+# Advanced Variable Usage
+
+## `_in_query` vs `_is_selected`
+
+| Variable | Definition | Critical Difference (Totals) |
+| :--- | :--- | :--- |
+| `_in_query` | Returns `true` if the field is in the SELECT clause, Filters, or `required_fields`. | **Remains `true`** during totals calculation if the field contributed to the query. |
+| `_is_selected` | Returns `true` if the field is in the SELECT clause or `required_fields`. | **Returns `false`** during totals calculation (Row/Column/Grand Totals) for dimensions, because dimensions are removed from the query to calculate totals. |
+
+> [!WARNING]
+> If you use `_is_selected` to conditionally render logic for a dimension, that logic will **fail** (return false) in the Totals row. Use `_in_query` if you need the logic to persist in totals, or explicitly handle the `false` state for totals if that is the desired behavior.
 
 # Liquid Variable Definitions
 
 The following table describes the Liquid variables that you can use with LookML and where they can be used.
 
 **Usage Key:**
-*   **A**: Works with the `action` parameter.
-*   **DV**: Works with the `default_value` (for dashboards) parameter.
-*   **DE**: Works with the `description` parameter at the field level.
-*   **F**: Works with the `filters` (for dashboard elements) parameter.
-*   **H**: Works with the `html` parameter.
-*   **LA**: Works with field-level label parameters (`label`, `view_label`, `group_label`, `group_item_label`).
-*   **LI**: Works with the `link` parameter.
-*   **S**: Works with all LookML parameters that begin with `sql` (e.g. `sql`, `sql_on`, `sql_table_name`).
+*   **A**: `action`
+*   **DV**: `default_value` (dashboards)
+*   **DE**: `description`
+*   **F**: `filters` (dashboard elements)
+*   **H**: `html`
+*   **LA**: Label parameters (`label`, `view_label`, `group_label`, `group_item_label`)
+*   **LI**: `link`
+*   **S**: SQL parameters (`sql`, `sql_on`, `sql_table_name`)
 
 | Variable | Definition | Usage |
 | :--- | :--- | :--- |
-| `value` | The raw value of the field returned by the database query. | A, H, LI |
-| `rendered_value` | The value of the field with Looker's default formatting. | A, H, LI |
-| `filterable_value` | The value of the field formatted for use as a filter in a Looker URL. | A, H, LI |
-| `link` | The URL to Looker's default drill link. | A, H, LI, S |
-| `linked_value` | The value of the field with Looker's default formatting and default linking. | A, H, LI |
-| `_filters['view_name.field_name']` | The user filters applied to the specified field. | A, DE, H, LA, LI |
-| `{% date_start date_filter_name %}` | The beginning date in a date filter. | S |
-| `{% date_end date_filter_name %}` | The ending date in a date filter. | S |
-| `{% condition filter_name %} sql_or_lookml_reference {% endcondition %}` | The value of the filter applied to the reference as SQL. | S |
-| `{% parameter parameter_name %}` | The value of the parameter filter. | DE, LA, S |
-| `parameter_name._parameter_value` | Injects the value of the parameter filter into a logical statement. | DE, H, LA, LI, S |
-| `_user_attributes['name_of_attribute']` | The value of the user attribute. | A, DE, H, LA, LI, S, DV, F |
-| `_localization['localization_key']` | Returns the value associated with a localization key. | DV, F |
-| `_model._name` | The name of the model for this field. | A, DE, H, LA, LI, S |
-| `_view._name` | The name of the view for this field. | A, DE, H, LA, LI, S |
-| `_explore._name` | The name of the Explore for this field. | A, DE, H, LA, LI, S |
-| `_explore._dashboard_url` | The relative URL for the current dashboard. | H, LI |
-| `_field._name` | The name of the field itself. | A, DE, H, LA, LI, S |
-| `_query._query_timezone` | The time zone in which the query was run. | A, DE, H, LA, LI, S |
-| `view_name._in_query` | Returns `true` if any field from the view is included in the query. | DE, LA, LI, S |
-| `view_name.field_name._in_query` | Returns `true` if the field appears in the query or filters. | DE, LA, LI, S |
-| `view_name.field_name._is_selected` | Returns `true` if the field appears in the query data table. | DE, LA, LI, S |
-| `view_name.field_name._is_filtered` | Returns `true` if the field is included in a filter. | DE, LA, LI, S |
+| `value` | The raw value of the field. | A, H, LI |
+| `rendered_value` | The formatted value of the field. | A, H, LI |
+| `filterable_value` | The value formatted for URL filtering. | A, H, LI |
+| `link` | The default drill link URL. | A, H, LI, S |
+| `linked_value` | The value with default formatting and linking. | A, H, LI |
+| `_filters['view.field']` | User filters applied to the field. | A, DE, H, LA, LI |
+| `{% date_start filter %}` | Start date of a date filter. | S |
+| `{% date_end filter %}` | End date of a date filter. | S |
+| `{% condition filter %} sql {% endcondition %}` | Applies filter logic to SQL. | S |
+| `{% parameter name %}` | Value of a parameter. | DE, LA, S |
+| `name._parameter_value` | Injects parameter value (safe for logic). | DE, H, LA, LI, S |
+| `_user_attributes['name']` | User attribute value. | A, DE, H, LA, LI, S, DV, F |
+| `_model._name` | Model name. | A, DE, H, LA, LI, S |
+| `_view._name` | View name. | A, DE, H, LA, LI, S |
+| `_explore._name` | Explore name. | A, DE, H, LA, LI, S |
+| `_field._name` | Field name. | A, DE, H, LA, LI, S |
+| `view._in_query` | `true` if *any* field from view is queried. | DE, LA, LI, S |
+| `view.field._in_query` | `true` if field is in query/filter. | DE, LA, LI, S |
+| `view.field._is_selected` | `true` if field is in SELECT. | DE, LA, LI, S |
+| `view.field._is_filtered` | `true` if field is filtered. | DE, LA, LI, S |
+
+# Advanced Use Cases
+
+## 1. Aggregate Awareness (Dynamic Table Selection)
+Use `_in_query` to route queries to smaller, pre-aggregated tables when the user doesn't request granular details. This significantly improves query performance.
+
+```lookml
+view: orders {
+  sql_table_name:
+    {% if orders.created_date._in_query or orders.created_hour._in_query %}
+      orders_daily_summary  -- Fallback to daily partition if granular date used
+    {% elsif orders.created_month._in_query %}
+      orders_monthly_summary -- Use monthly summary for high-level queries
+    {% else %}
+      orders_all_transactions -- Default/Detail table
+    {% endif %} ;;
+}
+```
+
+## 2. Dynamic Joins (`sql_on`)
+Use `_in_query` in joins to avoid joining heavy tables unless they are actually required by the user's selection.
+
+```lookml
+explore: order_items {
+  join: users {
+    type: left_outer
+    sql_on: ${order_items.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+
+  join: user_facts {
+    type: left_outer
+    sql_on: ${users.id} = ${user_facts.user_id} ;;
+    relationship: one_to_one
+    # Only join user_facts if a field from it is actually selected/filtered
+    sql_where: {% if user_facts._in_query %} 1=1 {% else %} 1=0 {% endif %} ;;
+  }
+}
+```
+*Note: The `sql_where` trick is one way to force a join drop in some dialects, but standard `sql_on` logic with `{% if %}` is cleaner if supported.*
+
+## 3. Column-Specific Logic (Dynamic Denominator)
+Change a calculation based on what other fields are present in the query.
+
+```lookml
+measure: dynamic_rate {
+  type: number
+  sql:
+    {% if users.traffic_source._is_selected %}
+      ${total_revenue} / NULLIF(${traffic_source_count}, 0)
+    {% else %}
+      ${total_revenue} / NULLIF(${total_users}, 0)
+    {% endif %} ;;
+}
+```
 
 # Examples
 
@@ -72,19 +138,6 @@ dimension: status {
 }
 ```
 
-## Dynamic SQL (Table Selection)
-
-```lookml
-view: events {
-  sql_table_name:
-    {% if events.date._in_query %}
-      events_daily
-    {% else %}
-      events_all
-    {% endif %} ;;
-}
-```
-
 ## Templated Filters (Derived Table)
 
 ```lookml
@@ -95,10 +148,6 @@ view: customer_facts {
       FROM orders
       WHERE {% condition order_date %} created_at {% endcondition %}
       GROUP BY 1 ;;
-  }
-  
-  filter: order_date {
-    type: date
   }
 }
 ```
