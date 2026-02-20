@@ -44,6 +44,17 @@ git pull origin main
 **Note for AI Context:**
 Once downloaded, you can symlink this folder or configure your AI tool to watch this specific directory for instructions.
 
+### Method 3: Direct Download (Simplest)
+
+If you prefer not to use Git, you can simply download the latest version of the skills.
+
+1.  Download the **[ZIP file](https://github.com/lkrdev/lookml_skills/archive/refs/heads/main.zip)**.
+2.  Unzip `lookml_skills-main.zip`.
+3.  Rename the folder to `skills` and move it into your project.
+
+**For AI Tools:**
+Simply point your context to the `.agents/skills` directory inside the `skills` folder.
+
 
 ## Core LookML Skills
 

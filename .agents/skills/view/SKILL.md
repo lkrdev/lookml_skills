@@ -28,6 +28,10 @@ description: Use this skill to create or modify LookML Views. Covers basic view 
 -   **Descriptions**: Add descriptions to the view itself if it helps explain its purpose (e.g., "Daily active users aggregated by region").
 -   **Output Format**: Ensure the file ends with a newline.
 
+## 4. Related Skills
+
+-   **[lookml-refinements](../lookml-refinements/SKILL.md)**: Logic for `include`, refinements (`+`), and Hub & Spoke patterns.
+
 # Examples
 
 ## Basic View
