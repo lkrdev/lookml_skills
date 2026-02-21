@@ -151,3 +151,28 @@ view: customer_facts {
   }
 }
 ```
+
+## Complex Logic (Loops & Split)
+
+LookML Liquid can handle string manipulation and loops, which is useful for parsing complex filter parameters or unnesting values. This is used infrequently, but very handy in complex modeling tasks.
+
+```lookml
+view: brand_category_item {
+  parameter: filter { type: unquoted }
+}
+
+explore: complex_filter_parsing {
+  # Example: Parsing a string like "Brand1..Category1__Brand2..Category2"
+  # This logic splits the string by '__' then '..' to generate OR conditions
+  sql_where:
+    {% assign items = brand_category_item.filter._parameter_value | split: '__' %}
+    {% for item in items %}
+      {% assign parts = item | split: '..' %}
+      {% if forloop.first %} ( {% else %} OR ( {% endif %}
+        ${products.brand} = '{{ parts[0] }}' AND ${products.category} = '{{ parts[1] }}'
+      )
+    {% endfor %}
+    {% if items.size == 0 %} 1=1 {% endif %}
+  ;;
+}
+```
