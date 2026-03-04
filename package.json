@@ -8,6 +8,9 @@
     "bin",
     ".agents/skills"
   ],
+  "repository": {
+    "url": "https://github.com/lkrdev/lookml_skills"
+  },
   "description": "This repository contains a collection of \"skills\" designed to assist AI agents and developers in writing high-quality, standardized LookML code. Each skill encapsulates specific instructions, best practices, and examples for different aspects of Looker development.",
   "keywords": [],
   "author": "Bryan Weber (bwebs)",
