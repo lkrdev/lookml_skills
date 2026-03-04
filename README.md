@@ -6,55 +6,27 @@ This repository contains a collection of "skills" designed to assist AI agents a
 
 To use these skills in your own projects—especially to enhance AI assistants like **Gemini**, **Cursor**, **Antigravity**, or **Claude Code**—we recommend adding this repository to your project.
 
-### Method 1: Git Submodule (Recommended)
+### Installation via npx (Recommended)
 
-This method keeps the skills repo as a distinct, updatable dependency. It is ideal for maintaining the latest best practices across multiple projects.
+The easiest way to install and update the skills in your repository is by using `npx`. This will copy the latest `.agents/skills` directory directly into your current working directory.
 
 ```bash
-# Add the skills repo as a submodule
-git submodule add git@github.com:lkrdev/lookml_skills.git skills
+npx @lkrdev/lookml-skills
+```
 
-# Initialize and update
-git submodule update --init --recursive
+By default, the installer will skip any files that haven't changed, and will prompt you to confirm if there is a conflict. 
+
+**Options:**
+- `--override`: Automatically overwrite any existing files that have conflicts without prompting.
+
+```bash
+npx @lkrdev/lookml-skills --override
 ```
 
 **For AI Tools:**
-*   **Cursor**: Ensure the `skills` folder is indexed. You may need to expressly verify `.cursorignore` does not exclude it.
-*   **Claude Code**: Claude can inherently read files in submodules.
+*   **Cursor**: Ensure the `.agents` folder is indexed. You may need to expressly verify `.cursorignore` does not exclude it.
+*   **Claude Code**: Claude can inherently read files locally.
 *   **Gemini / Antigravity**: Point your context to the `.agents/skills` directory when prompting.
-
-### Method 2: Sparse Checkout (Minimalist)
-
-Use this if you **only** want the `.agents/skills` folder and nothing else from this repository, without the overhead of a full clone history for other files.
-
-```bash
-# 1. Create a directory for the skills and initialize a new git repo
-mkdir looker-skills && cd looker-skills
-git init
-git remote add origin git@github.com:lkrdev/lookml_skills.git
-
-# 2. Configure sparse checkout to only include the '.agents/skills' directory
-git config core.sparseCheckout true
-echo ".agents/skills/" >> .git/info/sparse-checkout
-
-# 3. Pull the content
-git pull origin main
-```
-
-**Note for AI Context:**
-Once downloaded, you can symlink this folder or configure your AI tool to watch this specific directory for instructions.
-
-### Method 3: Direct Download (Simplest)
-
-If you prefer not to use Git, you can simply download the latest version of the skills.
-
-1.  Download the **[ZIP file](https://github.com/lkrdev/lookml_skills/archive/refs/heads/main.zip)**.
-2.  Unzip `lookml_skills-main.zip`.
-3.  Rename the folder to `skills` and move it into your project.
-
-**For AI Tools:**
-Simply point your context to the `.agents/skills` directory inside the `skills` folder.
-
 
 ## Core LookML Skills
 

@@ -1,0 +1,21 @@
+{
+  "name": "@lkrdev/lookml-skills",
+  "version": "1.0.0",
+  "bin": {
+    "lookml_skills": "bin/index.js"
+  },
+  "files": [
+    "bin",
+    ".agents/skills"
+  ],
+  "description": "This repository contains a collection of \"skills\" designed to assist AI agents and developers in writing high-quality, standardized LookML code. Each skill encapsulates specific instructions, best practices, and examples for different aspects of Looker development.",
+  "keywords": [],
+  "author": "Bryan Weber (bwebs)",
+  "organization": "lkr.dev",
+  "license": "ISC",
+  "dependencies": {
+    "diff": "^8.0.3",
+    "picocolors": "^1.1.1",
+    "prompts": "^2.4.2"
+  }
+}
