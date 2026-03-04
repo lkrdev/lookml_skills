@@ -9,7 +9,8 @@
     ".agents/skills"
   ],
   "repository": {
-    "url": "https://github.com/lkrdev/lookml_skills"
+    "type": "git",
+    "url": "git+https://github.com/lkrdev/lookml_skills.git"
   },
   "description": "This repository contains a collection of \"skills\" designed to assist AI agents and developers in writing high-quality, standardized LookML code. Each skill encapsulates specific instructions, best practices, and examples for different aspects of Looker development.",
   "keywords": [],
