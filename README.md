@@ -8,7 +8,7 @@ To use these skills in your own projects—especially to enhance AI assistants l
 
 ### Installation via npx (Recommended)
 
-The easiest way to install and update the skills in your repository is by using `npx`. This will copy the latest skills directory (default: `.agents/skills`) directly into your current working directory. By default, the installer will ask if you want to use a prefix (e.g., `.agents/lookml-skills`).
+The easiest way to install and update the skills in your repository is by using `npx`. This will copy the latest skills directory (default: `.agents/skills/lookml-:skill-name`) directly into your current working directory.
 
 ```bash
 npx @lkr-dev/lookml-skills

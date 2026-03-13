@@ -1,0 +1,18 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.md'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Website Deploy
+        run: |
+          curl -fSL "$DEPLOY_URL"
+        env:
+          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
