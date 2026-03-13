@@ -17,7 +17,7 @@ npx @lkr-dev/lookml-skills
 By default, the installer will skip any files that haven't changed, and will prompt you to confirm if there is a conflict. 
 
 **Options:**
-- `--override`: Automatically overwrite any existing files that have conflicts WITHOUT prompting. This also skips the prefix prompt, defaulting the target directory to `.agents/skills`.
+- `--override`: Automatically overwrite any existing files that have conflicts WITHOUT prompting.
 
 ```bash
 npx @lkr-dev/lookml-skills --override
