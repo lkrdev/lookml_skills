@@ -4,6 +4,8 @@ on:
     types:
       - reopened
       - opened
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 jobs:
   label_issues_p3:
     runs-on: ubuntu-latest
