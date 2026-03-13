@@ -1,5 +1,5 @@
 ---
-name: formulate_explore_advanced
+name: lookml-explore-advanced
 description: Use this skill for advanced Explore configurations like UNNESTing arrays, using `access_filter` for row-level security, and complex `sql_always_where` logic.
 ---
 

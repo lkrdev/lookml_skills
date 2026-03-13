@@ -1,5 +1,5 @@
 ---
-name: value_format
+name: lookml-fields-value-format
 description: Guide to using value_format, value_format_name, and specialized formatting in LookML
 ---
 

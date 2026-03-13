@@ -1,5 +1,5 @@
 ---
-name: formulate_measure_lookml
+name: lookml-fields-measure
 description: Use this skill to create or modify LookML Measures. Covers aggregation types, filters, and drill_fields.
 ---
 

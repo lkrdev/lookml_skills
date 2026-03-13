@@ -1,5 +1,5 @@
 ---
-name: looker-lookml-sets
+name: lookml-sets
 description: Guide to using LookML sets for grouping fields, controlling visibility, and managing drill paths.
 ---
 

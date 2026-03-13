@@ -1,5 +1,5 @@
 ---
-name: formulate_model_lookml
+name: lookml-model
 description: Use this skill when you need to create or modify a LookML Model file (.model.lkml). This includes defining connections, includes, and configuring model-level settings.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: formulate_explore_lookml
+name: lookml-explore
 description: Use this skill when you need to create or modify a LookML Explore. This includes defining the Explore, joins, access grants, and basic configuration.
 ---
 
@@ -153,5 +153,5 @@ explore: orders_extended {
 ## Reference Skills
 
 For more complex scenarios, refer to these specialized skills:
-- [Advanced Explore Configuration](reference/advanced.md): UNNESTing, lateral flattens, and row-level security.
-- [Joins Deep Dive](reference/joins.md): Detailed join types, relationships, and aliasing.
+- [Advanced Explore Configuration](references/advanced.md): UNNESTing, lateral flattens, and row-level security.
+- [Joins Deep Dive](references/joins.md): Detailed join types, relationships, and aliasing.

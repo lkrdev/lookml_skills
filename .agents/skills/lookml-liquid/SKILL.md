@@ -1,5 +1,5 @@
 ---
-name: formulate_liquid_lookml
+name: lookml-liquid
 description: Use this skill to use Liquid variables in LookML for dynamic SQL, HTML, and Links, including advanced patterns for query optimization.
 ---
 

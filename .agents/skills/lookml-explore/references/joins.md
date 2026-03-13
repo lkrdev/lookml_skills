@@ -1,5 +1,5 @@
 ---
-name: formulate_explore_joins
+name: lookml-explore-joins
 description: Use this skill to add joins to a LookML Explore. Includes defining join types, relationships, and SQL conditions.
 ---
 
