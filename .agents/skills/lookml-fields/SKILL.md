@@ -1,5 +1,5 @@
 ---
-name: understand_lookml_fields
+name: lookml-fields
 description: Overview of LookML field types (Dimension, Measure, Filter, Parameter) and the role of the `sql` parameter in each. Use this skill to choose the right field type for your data modeling needs.
 ---
 
@@ -106,9 +106,9 @@ The `sql` parameter behaves differently strictly based on the field type.
 ## Reference Skills
 
 For detailed standards on specific field types, refer to:
-- [Dimensions](reference/dimension.md): Naming, labels, and type-specific rules.
-- [Measures](reference/measure.md): Aggregation types, filters, and formats.
-- [Filters & Parameters](reference/filter_parameter.md): Templated filters and user input.
-- [Dimension Groups](reference/dimension_group.md): Timeframes and intervals.
-- [Value Formats](reference/value_format.md): Named and custom currency/number formats.
+- [Dimensions](references/dimension.md): Naming, labels, and type-specific rules.
+- [Measures](references/measure.md): Aggregation types, filters, and formats.
+- [Filters & Parameters](references/filter_parameter.md): Templated filters and user input.
+- [Dimension Groups](references/dimension_group.md): Timeframes and intervals.
+- [Value Formats](references/value_format.md): Named and custom currency/number formats.
 

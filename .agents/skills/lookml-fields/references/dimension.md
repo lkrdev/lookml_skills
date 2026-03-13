@@ -1,5 +1,5 @@
 ---
-name: formulate_dimension_lookml
+name: lookml-fields-dimension
 description: Use this skill to create or modify LookML Dimensions. Covers basic dimension definitions, drill_fields, links, html, and common types.
 ---
 

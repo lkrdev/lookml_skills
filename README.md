@@ -8,7 +8,7 @@ To use these skills in your own projects—especially to enhance AI assistants l
 
 ### Installation via npx (Recommended)
 
-The easiest way to install and update the skills in your repository is by using `npx`. This will copy the latest `.agents/skills` directory directly into your current working directory.
+The easiest way to install and update the skills in your repository is by using `npx`. This will copy the latest skills directory (default: `.agents/skills`) directly into your current working directory. By default, the installer will ask if you want to use a prefix (e.g., `.agents/lookml-skills`).
 
 ```bash
 npx @lkrdev/lookml-skills
@@ -17,7 +17,7 @@ npx @lkrdev/lookml-skills
 By default, the installer will skip any files that haven't changed, and will prompt you to confirm if there is a conflict. 
 
 **Options:**
-- `--override`: Automatically overwrite any existing files that have conflicts without prompting.
+- `--override`: Automatically overwrite any existing files that have conflicts WITHOUT prompting. This also skips the prefix prompt, defaulting the target directory to `.agents/skills`.
 
 ```bash
 npx @lkrdev/lookml-skills --override
@@ -33,26 +33,26 @@ npx @lkrdev/lookml-skills --override
 These skills provide specific instructions for creating and modifying LookML objects.
 
 ### Models
-*   **[formulate_model_lookml](.agents/skills/model/SKILL.md)**: Instructions for creating and configuring Model files, including connections and includes.
+*   **[formulate_model_lookml](.agents/skills/lookml-model/SKILL.md)**: Instructions for creating and configuring Model files, including connections and includes.
 
 ### Explores
-*   **[formulate_explore_lookml](.agents/skills/explore/SKILL.md)**: Basic Explore definition, including descriptions, labels, and basic joins.
-*   **[formulate_explore_joins](.agents/skills/explore/reference/joins.md)**: Detailed guidance on defining joins, relationships, and SQL conditions.
-*   **[formulate_explore_advanced](.agents/skills/explore/reference/advanced.md)**: Advanced configurations like `access_filter`, `sql_always_where`, and UNNESTing arrays.
+*   **[formulate_explore_lookml](.agents/skills/lookml-explore/SKILL.md)**: Basic Explore definition, including descriptions, labels, and basic joins.
+*   **[formulate_explore_joins](.agents/skills/lookml-explore/references/joins.md)**: Detailed guidance on defining joins, relationships, and SQL conditions.
+*   **[formulate_explore_advanced](.agents/skills/lookml-explore/references/advanced.md)**: Advanced configurations like `access_filter`, `sql_always_where`, and UNNESTing arrays.
 
 ### Views
-*   **[formulate_view_lookml](.agents/skills/view/SKILL.md)**: Standard View definitions, `sql_table_name`, and file organization (Standard, Extended, Refined).
-*   **[formulate_derived_table](.agents/skills/view/reference/derived_table.md)**: creating Native Derived Tables (NDT) and SQL Derived Tables (SDT).
+*   **[formulate_view_lookml](.agents/skills/lookml-view/SKILL.md)**: Standard View definitions, `sql_table_name`, and file organization (Standard, Extended, Refined).
+*   **[formulate_derived_table](.agents/skills/lookml-view/references/derived_table.md)**: creating Native Derived Tables (NDT) and SQL Derived Tables (SDT).
 
 ### Fields
-*   **[formulate_dimension_lookml](.agents/skills/fields/reference/dimension.md)**: Creating Dimensions, including HTML, links, and tier types.
-*   **[formulate_measure_lookml](.agents/skills/fields/reference/measure.md)**: Creating Measures, including aggregation types and drill fields.
-*   **[formulate_dimension_group_lookml](.agents/skills/fields/reference/dimension_group.md)**: Defining Dimension Groups for time and duration, including timeframe best practices.
-*   **[formulate_filter_parameter_lookml](.agents/skills/fields/reference/filter_parameter.md)**: Creating Filter-only fields and Parameters for dynamic interactivity.
+*   **[formulate_dimension_lookml](.agents/skills/lookml-fields/references/dimension.md)**: Creating Dimensions, including HTML, links, and tier types.
+*   **[formulate_measure_lookml](.agents/skills/lookml-fields/references/measure.md)**: Creating Measures, including aggregation types and drill fields.
+*   **[formulate_dimension_group_lookml](.agents/skills/lookml-fields/references/dimension_group.md)**: Defining Dimension Groups for time and duration, including timeframe best practices.
+*   **[formulate_filter_parameter_lookml](.agents/skills/lookml-fields/references/filter_parameter.md)**: Creating Filter-only fields and Parameters for dynamic interactivity.
 
 ## Advanced Functionality
 
 ### Logic & Security
-*   **[formulate_liquid_lookml](.agents/skills/liquid/SKILL.md)**: Using Liquid variables for dynamic SQL, HTML, and links.
-*   **[formulate_access_grants](.agents/skills/access_grants/SKILL.md)**: Implementing `access_grant` and `required_access_grants` for row-level security.
-*   **[formulate_lookml_tests](.agents/skills/tests/SKILL.md)**: Writing LookML tests for Views and Explores.
+*   **[formulate_liquid_lookml](.agents/skills/lookml-liquid/SKILL.md)**: Using Liquid variables for dynamic SQL, HTML, and links.
+*   **[formulate_access_grants](.agents/skills/lookml-access-grants/SKILL.md)**: Implementing `access_grant` and `required_access_grants` for row-level security.
+*   **[formulate_lookml_tests](.agents/skills/lookml-tests/SKILL.md)**: Writing LookML tests for Views and Explores.

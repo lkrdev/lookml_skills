@@ -1,5 +1,5 @@
 ---
-name: formulate_view_lookml
+name: lookml-view
 description: Use this skill to create or modify LookML Views. Covers basic view definitions, sql_table_name, file organization, and patterns.
 ---
 
@@ -89,4 +89,4 @@ view: +users {
 
 ## Reference Skills
 
-- [Derived Tables](reference/derived_table.md): Standard (SDT) and Native (NDT) derived table patterns/materialization.
+- [Derived Tables](references/derived_table.md): Standard (SDT) and Native (NDT) derived table patterns/materialization.

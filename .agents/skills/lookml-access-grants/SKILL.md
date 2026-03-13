@@ -1,5 +1,5 @@
 ---
-name: formulate_access_grant_lookml
+name: lookml-access-grants
 description: Use this skill to create Access Grants for row-level or object-level security.
 ---
 

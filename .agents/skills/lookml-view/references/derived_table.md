@@ -1,5 +1,5 @@
 ---
-name: formulate_derived_table
+name: lookml-view-derived-table
 description: Use this skill to create Native Derived Tables (NDT) or SQL Derived Tables (SDT).
 ---
 

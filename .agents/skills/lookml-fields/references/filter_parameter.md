@@ -1,5 +1,5 @@
 ---
-name: formulate_filter_parameter_lookml
+name: lookml-fields-filter-parameter
 description: Use this skill to create Filter fields and Parameters for dynamic Liquid interactivity.
 ---
 

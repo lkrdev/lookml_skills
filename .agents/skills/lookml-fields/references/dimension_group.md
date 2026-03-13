@@ -1,5 +1,5 @@
 ---
-name: formulate_dimension_group_lookml
+name: lookml-fields-dimension-group
 description: Use this skill to create Dimension Groups (Time and Duration).
 ---
 

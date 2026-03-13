@@ -1,5 +1,5 @@
 ---
-name: tests
+name: lookml-tests
 description: Standards and best practices for writing LookML tests to ensure data integrity, accuracy, and logic validation.
 ---
 
