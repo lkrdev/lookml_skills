@@ -6,12 +6,11 @@ on:
 
 env:
   TAG: ${{ github.event.release.tag_name }}
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   publish:
     permissions:
-      id-token: write
+      id-token: write # Required for OIDC publishing
       contents: read
     runs-on: ubuntu-latest
     steps:
@@ -20,21 +19,19 @@ jobs:
       - name: Replace version in package.json
         shell: bash
         run: |
+          TAG=${{ github.event.release.tag_name }}
           if [[ "$OSTYPE" == "darwin"* ]]; then
-            find . -name "package.json" -exec sed -i '' "s/\"version\": \".*\"/\"version\": \"${{ env.TAG }}\"/" {} +
+            find . -name "package.json" -exec sed -i '' "s/\"version\": \".*\"/\"version\": \"${TAG}\"/" {} +
           else
-            find . -name "package.json" -exec sed -i "s/\"version\": \".*\"/\"version\": \"${{ env.TAG }}\"/" {} +
+            find . -name "package.json" -exec sed -i "s/\"version\": \".*\"/\"version\": \"${TAG}\"/" {} +
           fi
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "24.x"
-          registry-url: "https://registry.npmjs.org"
+          node-version: "24.14.0"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Publish skills
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
