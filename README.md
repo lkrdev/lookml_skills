@@ -11,7 +11,7 @@ To use these skills in your own projects—especially to enhance AI assistants l
 The easiest way to install and update the skills in your repository is by using `npx`. This will copy the latest skills directory (default: `.agents/skills`) directly into your current working directory. By default, the installer will ask if you want to use a prefix (e.g., `.agents/lookml-skills`).
 
 ```bash
-npx @lkrdev/lookml-skills
+npx @lkr-dev/lookml-skills
 ```
 
 By default, the installer will skip any files that haven't changed, and will prompt you to confirm if there is a conflict. 
@@ -20,7 +20,7 @@ By default, the installer will skip any files that haven't changed, and will pro
 - `--override`: Automatically overwrite any existing files that have conflicts WITHOUT prompting. This also skips the prefix prompt, defaulting the target directory to `.agents/skills`.
 
 ```bash
-npx @lkrdev/lookml-skills --override
+npx @lkr-dev/lookml-skills --override
 ```
 
 **For AI Tools:**

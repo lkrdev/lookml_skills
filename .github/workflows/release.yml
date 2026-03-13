@@ -9,6 +9,9 @@ env:
 
 jobs:
   publish:
+    permissions:
+      id-token: write # Required for OIDC publishing
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
