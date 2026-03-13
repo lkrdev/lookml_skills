@@ -37,18 +37,18 @@ These skills provide specific instructions for creating and modifying LookML obj
 
 ### Explores
 *   **[formulate_explore_lookml](.agents/skills/explore/SKILL.md)**: Basic Explore definition, including descriptions, labels, and basic joins.
-*   **[formulate_explore_joins](.agents/skills/explore/joins/SKILL.md)**: Detailed guidance on defining joins, relationships, and SQL conditions.
-*   **[formulate_explore_advanced](.agents/skills/explore/advanced/SKILL.md)**: Advanced configurations like `access_filter`, `sql_always_where`, and UNNESTing arrays.
+*   **[formulate_explore_joins](.agents/skills/explore/reference/joins.md)**: Detailed guidance on defining joins, relationships, and SQL conditions.
+*   **[formulate_explore_advanced](.agents/skills/explore/reference/advanced.md)**: Advanced configurations like `access_filter`, `sql_always_where`, and UNNESTing arrays.
 
 ### Views
 *   **[formulate_view_lookml](.agents/skills/view/SKILL.md)**: Standard View definitions, `sql_table_name`, and file organization (Standard, Extended, Refined).
-*   **[formulate_derived_table](.agents/skills/view/derived_table/SKILL.md)**: creating Native Derived Tables (NDT) and SQL Derived Tables (SDT).
+*   **[formulate_derived_table](.agents/skills/view/reference/derived_table.md)**: creating Native Derived Tables (NDT) and SQL Derived Tables (SDT).
 
 ### Fields
-*   **[formulate_dimension_lookml](.agents/skills/fields/dimension/SKILL.md)**: Creating Dimensions, including HTML, links, and tier types.
-*   **[formulate_measure_lookml](.agents/skills/fields/measure/SKILL.md)**: Creating Measures, including aggregation types and drill fields.
-*   **[formulate_dimension_group_lookml](.agents/skills/fields/dimension_group/SKILL.md)**: Defining Dimension Groups for time and duration, including timeframe best practices.
-*   **[formulate_filter_parameter_lookml](.agents/skills/fields/filter_parameter/SKILL.md)**: Creating Filter-only fields and Parameters for dynamic interactivity.
+*   **[formulate_dimension_lookml](.agents/skills/fields/reference/dimension.md)**: Creating Dimensions, including HTML, links, and tier types.
+*   **[formulate_measure_lookml](.agents/skills/fields/reference/measure.md)**: Creating Measures, including aggregation types and drill fields.
+*   **[formulate_dimension_group_lookml](.agents/skills/fields/reference/dimension_group.md)**: Defining Dimension Groups for time and duration, including timeframe best practices.
+*   **[formulate_filter_parameter_lookml](.agents/skills/fields/reference/filter_parameter.md)**: Creating Filter-only fields and Parameters for dynamic interactivity.
 
 ## Advanced Functionality
 

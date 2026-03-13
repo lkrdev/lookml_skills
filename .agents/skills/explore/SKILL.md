@@ -149,3 +149,9 @@ explore: orders_extended {
 }
 ```
 ```
+
+## Reference Skills
+
+For more complex scenarios, refer to these specialized skills:
+- [Advanced Explore Configuration](reference/advanced.md): UNNESTing, lateral flattens, and row-level security.
+- [Joins Deep Dive](reference/joins.md): Detailed join types, relationships, and aliasing.

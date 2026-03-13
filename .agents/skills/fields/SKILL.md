@@ -101,4 +101,14 @@ The `sql` parameter behaves differently strictly based on the field type.
 | **Measure (Num)** | **Other Measures** | **YES** | Yes (already agg) |
 | **Filter** | (Rarely used) | No | N/A |
 | **Parameter** | (None) | No | N/A |
+| **Value Format** | (None) | No | N/A |
+
+## Reference Skills
+
+For detailed standards on specific field types, refer to:
+- [Dimensions](reference/dimension.md): Naming, labels, and type-specific rules.
+- [Measures](reference/measure.md): Aggregation types, filters, and formats.
+- [Filters & Parameters](reference/filter_parameter.md): Templated filters and user input.
+- [Dimension Groups](reference/dimension_group.md): Timeframes and intervals.
+- [Value Formats](reference/value_format.md): Named and custom currency/number formats.
 

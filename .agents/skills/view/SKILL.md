@@ -86,3 +86,7 @@ view: +users {
   }
 }
 ```
+
+## Reference Skills
+
+- [Derived Tables](reference/derived_table.md): Standard (SDT) and Native (NDT) derived table patterns/materialization.
