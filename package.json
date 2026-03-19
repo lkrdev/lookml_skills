@@ -6,7 +6,7 @@
   },
   "files": [
     "bin",
-    ".agents/skills"
+    "skills"
   ],
   "repository": {
     "type": "git",
