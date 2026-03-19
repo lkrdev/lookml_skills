@@ -8,7 +8,7 @@ To use these skills in your own projects—especially to enhance AI assistants l
 
 ### Installation via npx skills add (Recommended)
 
-To install the skills in your repository, use `npx skills add`.
+The `skills` CLI is a tool used to install and manage specialized instructions (skills) for AI agents in your workspace. To install these LookML skills in your project, use `npx skills add`.
 
 ```bash
 npx skills add lkrdev/lookml_skills
