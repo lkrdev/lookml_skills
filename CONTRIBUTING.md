@@ -32,7 +32,7 @@ git checkout -b feature/my-new-skill
 ```
 
 ### 5. Make your Changes & Test Locally
-Add or modify the files within the `.agents/skills` directory, or make changes to the CLI script in the `bin` folder.
+Add or modify the files within the `skills` directory, or make changes to the CLI script in the `bin` folder.
 
 If you are modifying the CLI script, you can test it locally using `npm`:
 
@@ -66,7 +66,7 @@ Go to the original `lkrdev/lookml_skills` repository on GitHub. You should see a
 
 ## Adding a New Skill
 When proposing a new skill, please ensure you use the existing skills as a template:
-- Place it in the correct subdirectory under `.agents/skills/`.
+- Place it in the correct subdirectory under `skills/`.
 - Ensure it contains a `SKILL.md` file with the frontmatter and content detailing the prompt injection instructions.
 - Provide clear task instructions, required parameters, best practices, and code examples.
 
