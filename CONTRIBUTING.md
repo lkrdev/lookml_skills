@@ -4,7 +4,7 @@ First off, thank you for considering contributing to LookML Skills! It's people 
 
 ## How to Contribute
 
-We welcome all contributions, whether it's adding a new skill, refining an existing one, or improving the CLI script. Here is a quick guide to help you get started:
+We welcome all contributions, whether it's adding a new skill or refining an existing one. Here is a quick guide to help you get started:
 
 ### 1. Fork the Repository
 Click the **Fork** button in the top-right corner of this repository's GitHub page to create a copy of the repository in your own GitHub account.
@@ -32,25 +32,7 @@ git checkout -b feature/my-new-skill
 ```
 
 ### 5. Make your Changes & Test Locally
-Add or modify the files within the `skills` directory, or make changes to the CLI script in the `bin` folder.
-
-If you are modifying the CLI script, you can test it locally using `npm`:
-
-```bash
-# Install dependencies
-npm install
-
-# Test the script locally
-node bin/index.js
-
-# Or use npm link to test globally
-npm link
-
-# Test the command in a dummy project directory
-cd /tmp
-mkdir test-skills && cd test-skills
-npx @lkrdev/lookml-skills
-```
+Add or modify the files within the `skills` directory.
 
 ### 6. Commit and Push
 Once you are happy with your changes, commit them and push them up to your fork:
