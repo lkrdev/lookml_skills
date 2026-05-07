@@ -19,7 +19,6 @@ Before taking any action, you **must** ask the user:
 2. **Create the Project**: Once in Development Mode, invoke the `create_project` tool to create the project in Looker.
 
 ```json
-// Example Tool Call
 {
   "name": "create_project",
   "arguments": {
@@ -77,7 +76,7 @@ If the user chose **Git-connected**:
        `gh repo create <owner>/<repo_name> --private --confirm` (or `--public`)
      - **Add Deploy Key with Write Access** (Crucial for Looker to push changes):
        `echo "<public_deploy_key>" | gh repo deploy-key add - -w -t "Looker Deploy Key - my_new_project"`
-     - **Get SSH URL**: The SSH URL will typically be `git@github.com:<owner>/<repo_name>.git`.
+     - **Get SSH URL**: Retrieve the SSH URL using `gh repo view <owner>/<repo_name> --json sshUrl -q .sshUrl`.
 
 4. **If `gh` is NOT Available (Manual Setup)**:
    - Present the generated public deploy key to the user.
@@ -101,15 +100,15 @@ If the user chose **Git-connected**:
      "arguments": {
        "project_id": "my_new_project",
        "git_remote_url": "git@github.com:owner/repo.git",
-       "git_service_name": "github" // or "gitlab", etc.
+       "git_service_name": "github"
      }
    }
    ```
 
 6. **Synchronize Local Workspace with Looker Dev Branch**:
    Since Looker's Development Mode forces the session into a user-specific developer branch (e.g., `dev-<username>-<hash>`), you must check out and track this same branch locally to avoid branch disconnects.
-   1. Retrieve the active Looker branch name using the `get_git_branch` tool.
-   2. In the local workspace terminal, check out this branch (create it locally since it won't exist yet in your local git clone):
+   1. Retrieve the active Looker branch name using the `get_git_branch` tool (passing the `project_id`).
+   2. In the local workspace terminal, clone the repository (or initialize it and add the remote if not already cloned) and then check out this branch:
       `git checkout -b <looker_branch_name>`
    3. Push and track this branch on the remote repository:
       `git push -u origin <looker_branch_name>`
