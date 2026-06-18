@@ -1,17 +1,20 @@
-# Looker Developer Skills Repository
+# [DEPRECATED] Looker Developer Skills Repository
+
+> [!IMPORTANT]
+> This repository is now deprecated in favor of the official Looker open source repository. We are incredibly pleased to announce that our work has been integrated into the official [Looker Open Source Skills repository](https://github.com/looker-open-source/looker-skills). This transition represents a significant milestone for our project and we invite you to join the community at the new home for these skills. Our team is very happy to have played a role in shaping this official resource.
 
 This repository contains a collection of "skills" designed to assist AI agents and developers in writing high-quality, standardized LookML code. Each skill encapsulates specific instructions, best practices, and examples for different aspects of Looker development.
 
 ## Installation & Usage
 
-To use these skills in your own projects—especially to enhance AI assistants like **Gemini**, **Cursor**, **Antigravity**, or **Claude Code**—we recommend adding this repository to your project.
+To use these skills in your own projects—especially to enhance AI assistants like **Gemini**, **Cursor**, **Antigravity**, or **Claude Code**—we recommend adding the official repository to your project.
 
 ### Installation via npx skills add (Recommended)
 
 The `skills` CLI is a tool used to install and manage specialized instructions (skills) for AI agents in your workspace. To install these LookML skills in your project, use `npx skills add`.
 
 ```bash
-npx skills add lkrdev/lookml_skills
+npx skills add looker-open-source/looker-skills
 ```
 
 ## Core LookML Skills
